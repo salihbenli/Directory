@@ -14,6 +14,7 @@
 <body>
     <br />
     <h2>Contact</h2>
+    <a href="/Contact/ContactAdd/" class="btn btn-primary">Contact Insert</a>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <table id="tblContact" class="table table-striped" style="width:100%">
         <thead>
@@ -29,14 +30,14 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <th>@item.Name</th>
-                <th>@item.LastName</th>
-                <td>@item.Company</td>
-                <td><a href="/Bakimonarim/BakimDelete/" class="btn btn-danger">Delete</a></td>
-                <td><a href="/Bakimonarim/BakimUpdate/" class="btn btn-success">Update</a></td>
-                <td><a href="/Bakimonarim/BakimUpdate/" class="btn btn-success">Information Add</a></td>
-            </tr>
+                <tr>
+                    <th><a href="/Information/InfoList/@item.UUID">@item.Name</a></th>
+                    <th>@item.LastName</th>
+                    <td>@item.Company</td>
+                    <td><a href="/Contact/ContactDelete/@item.UUID" class="btn btn-danger">Delete</a></td>
+                    <td><a href="/Contact/ContactUpdate/@item.UUID" class="btn btn-success">Update</a></td>
+                    <td><a href="/Information/InfoAdd/@item.UUID" class="btn btn-success">Information Add</a></td>
+                </tr>
             }
         </tbody>
     </table>

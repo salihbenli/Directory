@@ -27,25 +27,37 @@ namespace DataAccess.Migrations
                 {
                     InfoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ContactID = table.Column<int>(type: "int", nullable: false),
-                    Telephone_Number = table.Column<int>(type: "int", nullable: false),
+                    Telephone_Number = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     E_Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Info = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Info = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UUID = table.Column<int>(type: "int", nullable: false),
+                    ContactUUID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Informations", x => x.InfoID);
+                    table.ForeignKey(
+                        name: "FK_Informations_Contacts_ContactUUID",
+                        column: x => x.ContactUUID,
+                        principalTable: "Contacts",
+                        principalColumn: "UUID",
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Informations_ContactUUID",
+                table: "Informations",
+                column: "ContactUUID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Contacts");
+                name: "Informations");
 
             migrationBuilder.DropTable(
-                name: "Informations");
+                name: "Contacts");
         }
     }
 }

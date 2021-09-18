@@ -11,10 +11,13 @@ namespace Entities.Concrete
     {
         [Key]
         public int InfoID { get; set; }
-        public int ContactID { get; set; }
-        public int Telephone_Number { get; set; }
+        public string Telephone_Number { get; set; }
         public string E_Mail { get; set; }
         public string Location { get; set; }
         public string Info { get; set; }
+        public int UUID { get; set; }
+        public Contact Contact { get; set; }
+
+
     }
 }

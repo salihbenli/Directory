@@ -1,0 +1,26 @@
+﻿@model Entities.Concrete.Contact
+@{
+    ViewData["Title"] = "ContactUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ContactUpdate</h1>
+
+@using (Html.BeginForm("ContactUpdate", "Contact", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("UUID")
+        @Html.TextBoxFor(x => x.UUID, new { @readonly = "readonly", @class = "form-control" })
+        <br />
+        @Html.Label("Name")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        @Html.Label("Last Name")
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Company")
+        @Html.TextBoxFor(x => x.Company, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Update</button>
+    </div>
+}

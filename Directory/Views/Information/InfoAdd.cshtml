@@ -1,0 +1,31 @@
+﻿@model Entities.Concrete.Information
+@{
+    ViewData["Title"] = "InfoAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>InfoAdd</h1>
+
+@using (Html.BeginForm("InfoAdd", "Information", FormMethod.Post))
+{
+    <div class="form-group">
+        <br />
+        @Html.Label("UUID")
+        @Html.TextBoxFor(x => x.UUID, new { @class = "form-control" })
+        <br />
+        @Html.Label("Telephone Number")
+        @Html.TextBoxFor(x => x.Telephone_Number, new { @class = "form-control" })
+        <br />
+        @Html.Label("E_Mail")
+        @Html.TextBoxFor(x => x.E_Mail, new { @class = "form-control" })
+        <br />
+        @Html.Label("Location")
+        @Html.TextBoxFor(x => x.Location, new { @class = "form-control" })
+        <br />
+        @Html.Label("Info")
+        @Html.TextBoxFor(x => x.Info, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info" href="/Contact/Contact/">Insert</button>
+    </div>
+}
+

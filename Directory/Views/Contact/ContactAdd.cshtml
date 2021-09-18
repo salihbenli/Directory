@@ -1,0 +1,22 @@
+﻿@model Entities.Concrete.Contact
+@{
+    ViewData["Title"] = "ContactAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ContactInsert</h1>
+@using (Html.BeginForm("ContactAdd", "Contact", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Name")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br />
+        @Html.Label("Last Name")
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Company")
+        @Html.TextBoxFor(x => x.Company, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Save</button>
+    </div>
+}
