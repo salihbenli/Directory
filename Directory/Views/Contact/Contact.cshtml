@@ -1,0 +1,44 @@
+﻿@using Entities.Concrete
+@model List<Contact>
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+
+
+</head>
+<body>
+    <br />
+    <h2>Contact</h2>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <table id="tblContact" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Company</th>
+                <th>Delete</th>
+                <th>Update</th>
+                <th>Information Add</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <th>@item.Name</th>
+                <th>@item.LastName</th>
+                <td>@item.Company</td>
+                <td><a href="/Bakimonarim/BakimDelete/" class="btn btn-danger">Delete</a></td>
+                <td><a href="/Bakimonarim/BakimUpdate/" class="btn btn-success">Update</a></td>
+                <td><a href="/Bakimonarim/BakimUpdate/" class="btn btn-success">Information Add</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
