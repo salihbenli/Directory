@@ -46,12 +46,12 @@ GO
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[Informations]  WITH CHECK ADD  CONSTRAINT [FK_Informations_Contacts_ContactUUID] FOREIGN KEY([UUID])
+4)      ALTER TABLE [dbo].[Informations]  WITH CHECK ADD  CONSTRAINT [FK_Informations_Contacts_ContactUUID] FOREIGN KEY([UUID])
 REFERENCES [dbo].[Contacts] ([UUID])
 ON DELETE CASCADE
 GO
 
-ALTER TABLE [dbo].[Informations] CHECK CONSTRAINT [FK_Informations_Contacts_ContactUUID]
+5)      ALTER TABLE [dbo].[Informations] CHECK CONSTRAINT [FK_Informations_Contacts_ContactUUID]
 GO
 
 Follow steps 1-2-3 respectively. After these processes, you are ready to open the project in visual studio.
