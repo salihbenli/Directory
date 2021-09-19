@@ -54,7 +54,7 @@ GO
 5.	ALTER TABLE [dbo].[Informations] CHECK CONSTRAINT [FK_Informations_Contacts_ContactUUID]
 GO
 
-Follow steps 1-2-3 respectively. After these processes, you are ready to open the project in visual studio.
+Follow steps 1-2-3-4-5 respectively. After these processes, you are ready to open the project in visual studio.
 
 Working Principles
 
