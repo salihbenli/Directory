@@ -31,6 +31,20 @@ namespace Business.Concrete
             return _efInforamtionRepository.List(x => x.UUID == id);
         }
 
+        public List<Information> GetListLocation(string location)
+        {
+            if (location != null)
+            {
+                var a = _efInforamtionRepository.List(x => x.Location == location).Distinct().ToList(); 
+                return a;
+            }
+            else
+            {
+                return _efInforamtionRepository.GetListAll().Distinct().ToList();
+            }
+
+        }
+
         public void InformationAdd(Information information)
         {
             _efInforamtionRepository.Insert(information);
@@ -38,7 +52,10 @@ namespace Business.Concrete
 
         public void InformationDelete(Information information)
         {
+
             _efInforamtionRepository.Delete(information);
+
+
         }
 
         public void InformationUpdate(Information information)

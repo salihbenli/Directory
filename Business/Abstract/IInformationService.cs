@@ -13,6 +13,7 @@ namespace Business.Abstract
         void InformationDelete(Information information);
         void InformationUpdate(Information information);
         List<Information> GetList();
+        List<Information> GetListLocation(string location);
         List<Information> GetListByID(int id);
         Information GetByID(int ID);
     }

@@ -1,8 +1,50 @@
-﻿
+﻿@using Entities.Concrete
+@model List<Information>
 @{
     ViewData["Title"] = "Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Info</h1>
+<html>
+<head>
+
+
+</head>
+<body>
+
+    <h1>Info</h1>
+    <div class="card my-2">
+        <div class="card-body">
+            <form method="get" id="filter">
+                <div class="form-group">
+                    <input name="location" class="form-control" placeholder="Location" value="@ViewBag.location" />
+                </div>
+                <button class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div>
+        <table id="tblContact" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Total People</th>
+                    <th>Total Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.Location</th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
 
