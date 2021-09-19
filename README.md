@@ -94,11 +94,11 @@ from largest to smallest. You can also shorten the list by city with the search 
 
 
 
-Built With
+Built With - 
 •	 .NET Core 
 •	 Git 
 •	 MSSQL 
 •	 Redis 
 
-Authors
+Author -
 Salih BENLİ
