@@ -17,7 +17,5 @@ namespace Entities.Concrete
         public string Info { get; set; }
         public int UUID { get; set; }
         public Contact Contact { get; set; }
-
-
     }
 }

@@ -22,26 +22,26 @@ namespace Directory.Controllers
         {
             return View();
         }
-        public ActionResult liste(string location)
+
+        public ActionResult Filter(string location)
         {
-            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)kisi_sayisi, count(distinct Telephone_Number)telefon from Informations where Location = '" + location + "' group by Location order by kisi_sayisi desc", system.baglan());
-            cmd.Fill(dataTable, "liste");
-            var rapor = JsonConvert.SerializeObject(dataTable.Tables["liste"]);
+            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)numberofpeople, count(distinct Telephone_Number)telephone from Informations where Location = '" + location + "' group by Location order by numberofpeople desc", system.baglan());
+            cmd.Fill(dataTable, "list");
+            var result = JsonConvert.SerializeObject(dataTable.Tables["list"]);
             system.baglan().Close();
-            return Json(rapor);
+            return Json(result);
         }
-
-
 
         public ActionResult Report()
         {
-            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)kisi_sayisi, count(distinct Telephone_Number)telefon from Informations where Location = Location group by Location order by kisi_sayisi desc", system.baglan());
-            cmd.Fill(dataTable, "liste");
-            var rapor = JsonConvert.SerializeObject(dataTable.Tables["liste"]);
+            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)numberofpeople, count(distinct Telephone_Number)telephone from Informations where Location = Location group by Location order by numberofpeople desc", system.baglan());
+            cmd.Fill(dataTable, "list");
+            var result = JsonConvert.SerializeObject(dataTable.Tables["list"]);
             system.baglan().Close();
-            return Json(rapor);
+            return Json(result);
         }
 
+        [HttpGet]
         public IActionResult InfoList(int id)
         {
             var result = _informationManager.GetListByID(id);

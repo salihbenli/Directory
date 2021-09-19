@@ -16,6 +16,5 @@ namespace Business.Abstract
         List<Information> GetListLocation(string location);
         List<Information> GetListByID(int id);
         Information GetByID(int ID);
-        List<Information> GetByDeleteID(int ID);
     }
 }

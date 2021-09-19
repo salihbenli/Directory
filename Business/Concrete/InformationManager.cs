@@ -17,11 +17,6 @@ namespace Business.Concrete
             _efInforamtionRepository = new EfInforamtionRepository();
         }
 
-        public List<Information> GetByDeleteID(int ID)
-        {
-            return _efInforamtionRepository.List(x => x.UUID == ID);
-        }
-
         public Information GetByID(int ID)
         {
             return _efInforamtionRepository.Get(x => x.InfoID == ID);

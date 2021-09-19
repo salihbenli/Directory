@@ -2,7 +2,7 @@
 @model List<Information>
 
 @{
-    ViewData["Title"] = "Info";
+    ViewData["Title"] = "Report";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
 <body>
     <button class="btn btn-primary" onclick="Report()">All Information</button>
     <input type="text" id="filter" name="location">
-    <button class="btn btn-primary" onclick="Liste()">Filter</button>
+    <button class="btn btn-primary" onclick="Filter()">Filter</button>
     <br />
     <div>
         <table id="tblReport" class="table table-striped" style="width:100%">
@@ -34,10 +34,10 @@
 
 <script>
 
-    function Liste() {
+    function Filter() {
         $("#tblReport tbody").empty();
         $.ajax({
-            url: '../Information/liste',
+            url: '../Information/Filter',
             type: 'POST',
             data: { location: $('#filter').val() },
             dataType: 'json',
@@ -47,15 +47,15 @@
                     $("#tblReport").append(
                         '<tr>' +
                         '<td>' + json_object[i].Location + ' </td >' +
-                        '<td>' + json_object[i].kisi_sayisi + '</td>' +
-                        '<td>' + json_object[i].telefon + '</td>' +
+                        '<td>' + json_object[i].numberofpeople + '</td>' +
+                        '<td>' + json_object[i].telephone + '</td>' +
                         ' </tr> '
                     );
 
                 }
             },
             error: function () {
-                alert("yeniden dene12");
+                alert("404");
             }
         });
     }
@@ -73,15 +73,15 @@
                     $("#tblReport").append(
                         '<tr>' +
                         '<td>' + json_object[i].Location + ' </td >' +
-                        '<td>' + json_object[i].kisi_sayisi + '</td>' +
-                        '<td>' + json_object[i].telefon + '</td>' +
+                        '<td>' + json_object[i].numberofpeople + '</td>' +
+                        '<td>' + json_object[i].telephone + '</td>' +
                         ' </tr> '
                     );
 
                 }
             },
             error: function () {
-                alert("yeniden dene12");
+                alert("404");
             }
         });
     }

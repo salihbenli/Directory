@@ -10,6 +10,7 @@ namespace Directory.Controllers
     {
         ContactManager _contactManager = new ContactManager();
         InformationManager _informationManager = new InformationManager();
+        [HttpGet]
         public IActionResult Contact()
         {
             var result = _contactManager.GetList();
@@ -26,16 +27,8 @@ namespace Directory.Controllers
             _contactManager.ContactAdd(contact);
             return RedirectToAction("Contact");
         }
-
         public ActionResult ContactDelete(int id)
         {
-
-            //var infoDelete = _informationManager.GetByDeleteID(id);
-            //for (int i = 0; i < infoDelete.Count; i++)
-            //{
-            //    _informationManager.InformationDelete(i);
-            //}
-           
             var contactDelete = _contactManager.GetByID(id);
             _contactManager.ContactDelete(contactDelete);
             return RedirectToAction("Contact");
