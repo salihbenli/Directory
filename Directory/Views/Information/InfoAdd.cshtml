@@ -13,7 +13,7 @@
 <div class="form-group">
     <br />
     @Html.Label("UUID")
-    @Html.TextBoxFor(x => x.UUID, new { @readonly = "readonly", @class = "form-control" })
+    @Html.DropDownListFor(x => x.UUID, (List<SelectListItem>)ViewBag.vlc, new { @readonly = "readonly", @class = "form-control" })
     <br />
     @Html.Label("Telephone Number")
     @Html.TextBoxFor(x => x.Telephone_Number, new { @class = "form-control"})

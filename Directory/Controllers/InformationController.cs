@@ -3,7 +3,10 @@ using DataAccess.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Directory.Controllers
@@ -12,13 +15,31 @@ namespace Directory.Controllers
     {
         InformationManager _informationManager = new InformationManager();
         ContactManager _contactManager = new ContactManager();
+        DataSet dataTable = new DataSet();
+        Context system = new Context();
 
-        [HttpGet]
-        public IActionResult Info(string location = null)
+        public ActionResult Info()
         {
-            var result = _informationManager.GetListLocation(location);
-            ViewBag.location = location;
-            return View(result);
+            return View();
+        }
+        public ActionResult liste(string location)
+        {
+            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)kisi_sayisi, count(distinct Telephone_Number)telefon from Informations where Location = '" + location + "' group by Location order by kisi_sayisi desc", system.baglan());
+            cmd.Fill(dataTable, "liste");
+            var rapor = JsonConvert.SerializeObject(dataTable.Tables["liste"]);
+            system.baglan().Close();
+            return Json(rapor);
+        }
+
+
+
+        public ActionResult Report()
+        {
+            SqlDataAdapter cmd = new SqlDataAdapter("select Location, count(distinct UUID)kisi_sayisi, count(distinct Telephone_Number)telefon from Informations where Location = Location group by Location order by kisi_sayisi desc", system.baglan());
+            cmd.Fill(dataTable, "liste");
+            var rapor = JsonConvert.SerializeObject(dataTable.Tables["liste"]);
+            system.baglan().Close();
+            return Json(rapor);
         }
 
         public IActionResult InfoList(int id)
@@ -30,17 +51,15 @@ namespace Directory.Controllers
         [HttpGet]
         public ActionResult InfoAdd(int id)
         {
-            var contactResult = _contactManager.GetByID(id);
-            var infoResult = _informationManager.GetList();
-            if (infoResult.Count != 0)
-            {
-                var infoadd = infoResult.Find(x => x.UUID == contactResult.UUID);
-                return View(infoadd);
-            }
-            else
-            {
-                return View();
-            }
+            List<SelectListItem> valueId = (from x in _contactManager.GetListByID(id)
+                                            select new SelectListItem
+                                            {
+                                                Text = x.Name + " " + x.LastName,
+                                                Value = x.UUID.ToString()
+                                            }).ToList();
+
+            ViewBag.vlc = valueId;
+            return View();
         }
 
         [HttpPost]

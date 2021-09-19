@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,16 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=Salih;Database=Directory; integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=.;Database=Directory; integrated security=true;");
         }
+
+        public SqlConnection baglan()
+        {
+            SqlConnection baglanti = new SqlConnection("Data Source=.;Initial Catalog=Directory;Integrated Security=True");
+            baglanti.Open();
+            return (baglanti);
+        }
+
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Information> Informations { get; set; }
     }

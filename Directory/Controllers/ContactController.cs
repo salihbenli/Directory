@@ -29,9 +29,13 @@ namespace Directory.Controllers
 
         public ActionResult ContactDelete(int id)
         {
-            //var infoDelete = _informationManager.GetListByID(id);
-            //_informationManager.InformationDelete(infoDelete);
 
+            //var infoDelete = _informationManager.GetByDeleteID(id);
+            //for (int i = 0; i < infoDelete.Count; i++)
+            //{
+            //    _informationManager.InformationDelete(i);
+            //}
+           
             var contactDelete = _contactManager.GetByID(id);
             _contactManager.ContactDelete(contactDelete);
             return RedirectToAction("Contact");

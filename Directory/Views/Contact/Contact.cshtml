@@ -30,7 +30,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <th><a href="/Information/InfoList/@item.UUID">@item.Name</a></th>
+                    <th><a href="/Information/InfoList/@item.UUID" style="color:black">@item.Name</a></th>
                     <th>@item.LastName</th>
                     <td>@item.Company</td>
                     <td><a href="/Contact/ContactDelete/@item.UUID" class="btn btn-danger">Delete</a></td>

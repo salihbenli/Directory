@@ -13,6 +13,7 @@ namespace Business.Abstract
         void ContactDelete(Contact contact);
         void ContactUpdate(Contact contact);
         List<Contact> GetList();
+        List<Contact> GetListByID(int id);
         Contact GetByID(int ID);
     }
 }

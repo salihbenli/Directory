@@ -38,5 +38,10 @@ namespace Business.Concrete
         {
             return _efContactRepository.GetListAll();
         }
+
+        public List<Contact> GetListByID(int id)
+        {
+            return _efContactRepository.List(x => x.UUID == id);
+        }
     }
 }
